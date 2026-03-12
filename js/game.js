@@ -1,8 +1,8 @@
-import { MovableObject } from "../models/movable-object.class.js";
+import { World } from "../models/world.class.js";
 
 let canvas;
 let ctx;
-let character = new MovableObject();
+let world = new World();
 
 
 function init(){
@@ -10,7 +10,9 @@ function init(){
     // mit Context kann man viele Variablen aufrufen wie drawImage()
     ctx = canvas.getContext('2d');
 
-    console.log('My Character is', character);
+    window.character = world.character;
+    window.enemies = world.enemies;
+    console.log('My Character is', world.character);
     
 }
 

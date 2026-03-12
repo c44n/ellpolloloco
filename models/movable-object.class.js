@@ -5,6 +5,9 @@ export class MovableObject {
 
     moveRight() {
         console.log('test');
+    }
+
+    moveLeft() {
         
     }
 }
