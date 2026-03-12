@@ -1,9 +1,9 @@
 export class MovableObject {
     x = 100;
     y = 180;
-    img;
     height = 150;
     width = 100;
+    img;
 
 
 
