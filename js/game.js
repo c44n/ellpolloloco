@@ -1,17 +1,14 @@
 import { World } from "../models/world.class.js";
 
 let canvas;
-let ctx;
-let world = new World();
+let world;
 
 
 function init(){
     canvas = document.getElementById('canvas');
-    // mit Context kann man viele Variablen aufrufen wie drawImage()
-    ctx = canvas.getContext('2d');
-
-    window.character = world.character;
-    window.enemies = world.enemies;
+    world = new World(canvas),
+    
+    window.world = world;
     console.log('My Character is', world.character);
     
 }
