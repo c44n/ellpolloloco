@@ -14,10 +14,10 @@ export class MovableObject {
     }
 
     loadImages(images) {
-        images.forEach(path => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img;
+        images.forEach(imagePath => {
+            this.img = new Image();
+            this.img.src = imagePath;
+            this.imageCache[imagePath] = this.img;
             
         });
     }

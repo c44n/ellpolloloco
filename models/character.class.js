@@ -4,14 +4,13 @@ import { MovableObject } from "./movable-object.class.js";
 export class Character extends MovableObject {
     height = 280;
     y = 155;
-
     imagesWalk = ImageHub.CHARACTER.walk;
     currentImage = 0;
 
     constructor() {
-        super().loadImage('img/2_character_pepe/2_walk/W-21.png');
+        // super().loadImage('img/2_character_pepe/2_walk/W-21.png');
 
-        this.loadImages(this.imagesWalk);
+        super().loadImages(this.imagesWalk);
 
         this.animate();
     }
