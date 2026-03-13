@@ -5,7 +5,7 @@ export class MovableObject {
     width = 100;
     img;
     imageCache = {};
-
+    currentImage = 0;
 
 
     loadImage(path) {
@@ -18,7 +18,7 @@ export class MovableObject {
             this.img = new Image();
             this.img.src = imagePath;
             this.imageCache[imagePath] = this.img;
-            
+
         });
     }
 
@@ -27,6 +27,6 @@ export class MovableObject {
     }
 
     moveLeft() {
-        
+
     }
 }
