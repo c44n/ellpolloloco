@@ -5,6 +5,7 @@ export class Character extends MovableObject {
     height = 280;
     y = 155;
     imagesWalk = ImageHub.CHARACTER.walk;
+    speed = 5;
     world;
 
     constructor() {
@@ -17,7 +18,23 @@ export class Character extends MovableObject {
 
     animate() {
         setInterval(() => {
+            if(this.world.keyboard.RIGHT) {
+                this.x += this.speed;
+                
+            }
+
+            if(this.world.keyboard.LEFT) {
+                this.x -= this.speed;
+                
+            }
+        }, 1000 / 60);
+
+
+        setInterval(() => {
             if (this.world.keyboard.RIGHT) {
+
+
+                // Walk animation
                 let i = this.currentImage % this.imagesWalk.length;
                 let path = this.imagesWalk[i];
                 this.img = this.imageCache[path];
