@@ -60,6 +60,20 @@ export class World {
     }
 
     addToMap(mO) {
+        if(mO.otherDirection) {
+            this.ctx.save();
+            // kp
+            this.ctx.translate(mO.width, 0);
+            // Spiegelt Bild
+            this.ctx.scale(-1, 1);
+            // kp
+            mO.x = mO.x * -1;
+        }
         this.ctx.drawImage(mO.img, mO.x, mO.y, mO.width, mO.height);
+
+        if(mO.otherDirection) {
+            mO.x = mO.x * -1;
+            this.ctx.restore();
+        }
     }
 }
