@@ -23,6 +23,7 @@ export class World {
     canvas;
     ctx;
     keyboard;
+    camera_x = 0;
 
     constructor(canvas, keyboard) {
         // mit Context kann man viele Variablen aufrufen wie drawImage()
@@ -39,11 +40,15 @@ export class World {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+
+        this.ctx.translate(this.camera_x, 0);
         
         this.addObjectsToMap(this.backgroundObjects);
         this.addToMap(this.character);
         this.addObjectsToMap(this.enemies);
         this.addObjectsToMap(this.clouds);
+
+        this.ctx.translate(-this.camera_x, 0);
 
         // self, weil this nicht funktioniert bei request - kennt aktuelle "welt" nicht drinnen
         let self = this;
@@ -62,7 +67,7 @@ export class World {
     addToMap(mO) {
         if(mO.otherDirection) {
             this.ctx.save();
-            // kp
+            // Bild verschieben -> aber verstehe ich nicht
             this.ctx.translate(mO.width, 0);
             // Spiegelt Bild
             this.ctx.scale(-1, 1);
