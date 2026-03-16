@@ -5,7 +5,7 @@ export class Character extends MovableObject {
     height = 280;
     y = 155;
     imagesWalk = ImageHub.CHARACTER.walk;
-    speed = 5;
+    speed = 20;
     world;
 
     constructor() {
