@@ -5,6 +5,7 @@ export class Character extends MovableObject {
     height = 280;
     y = 155;
     imagesWalk = ImageHub.CHARACTER.walk;
+    world;
 
     constructor() {
         // super().loadImage('img/2_character_pepe/2_walk/W-21.png');
@@ -16,10 +17,12 @@ export class Character extends MovableObject {
 
     animate() {
         setInterval(() => {
-            let i = this.currentImage % this.imagesWalk.length;
-            let path = this.imagesWalk[i];
-            this.img = this.imageCache[path];       
-            this.currentImage++;     
+            if (this.world.keyboard.RIGHT) {
+                let i = this.currentImage % this.imagesWalk.length;
+                let path = this.imagesWalk[i];
+                this.img = this.imageCache[path];
+                this.currentImage++;
+            }
         }, 100);
     }
 
