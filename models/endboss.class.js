@@ -1,4 +1,5 @@
 import { ImageHub } from "../manager_classes/image-hub.js";
+import { IntervalHub } from "../manager_classes/intervall-hub.js";
 import { MovableObject } from "./movable-object.class.js";
 
 export class Endboss extends MovableObject {
@@ -14,12 +15,10 @@ export class Endboss extends MovableObject {
 
         this.x = 2500;
 
-        this.animate();
+        IntervalHub.startInterval(this.startAnimation, 1000/15);
     }
 
-    animate() {
-        setInterval(() => {
-            this.playAnimations(this.imagesWalk);   
-        }, 1000 / 15);
-    }
+    startAnimation = () => {
+        this.playAnimations(this.imagesWalk);
+    };
 }

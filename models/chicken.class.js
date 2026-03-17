@@ -1,4 +1,5 @@
 import { ImageHub } from "../manager_classes/image-hub.js";
+import { IntervalHub } from "../manager_classes/intervall-hub.js";
 import { MovableObject } from "./movable-object.class.js";
 
 export class Chicken extends MovableObject {
@@ -13,16 +14,14 @@ export class Chicken extends MovableObject {
 
         this.x = 200 + Math.random() * 500;
         this.speed = 0.15 + Math.random() * 0.45;
-        this.animate();
-    }
 
-    animate() {
         this.moveLeft();
-
-        setInterval(() => {
-            this.playAnimations(this.imagesWalk);   
-        }, 1000 / 15);
+        IntervalHub.startInterval(this.walkAnimation, 1000 / 15);
     }
+
+    walkAnimation = () => {
+        this.playAnimations(this.imagesWalk);
+    };
 
     
 }
