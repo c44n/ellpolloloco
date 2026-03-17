@@ -1,28 +1,25 @@
 import { ImageHub } from "../manager_classes/image-hub.js";
 import { MovableObject } from "./movable-object.class.js";
 
-export class Chicken extends MovableObject {
-    height = 60;
-    width = 60;
-    y = 365;
-    imagesWalk = ImageHub.CHICKEN.walk;
+export class Endboss extends MovableObject {
+    height = 400;
+    width = 250;
+    y = 55;
+
+    imagesWalk = ImageHub.ENDBOSS.angry;
 
     constructor() {
         super().loadImage(this.imagesWalk[0]);
         this.loadImages(this.imagesWalk);
 
-        this.x = 200 + Math.random() * 500;
-        this.speed = 0.15 + Math.random() * 0.45;
+        this.x = 2500;
+
         this.animate();
     }
 
     animate() {
-        this.moveLeft();
-
         setInterval(() => {
             this.playAnimations(this.imagesWalk);   
         }, 1000 / 15);
     }
-
-    
 }
