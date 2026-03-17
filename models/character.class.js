@@ -4,7 +4,7 @@ import { MovableObject } from "./movable-object.class.js";
 
 export class Character extends MovableObject {
     height = 280;
-    y = 155;
+    y = 80;
     imagesWalk = ImageHub.CHARACTER.walk;
     speed = 20;
     world;
@@ -12,7 +12,7 @@ export class Character extends MovableObject {
     constructor() {
         super().loadImage(this.imagesWalk[0]);
         this.loadImages(this.imagesWalk);
-
+        this.applyGravity();
         IntervalHub.startInterval(this.startAndEndPoint, 1000 / 60);
         IntervalHub.startInterval(this.walkAnimation, 1000 / 15);
     }

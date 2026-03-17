@@ -1,3 +1,5 @@
+import { IntervalHub } from "../manager_classes/intervall-hub.js";
+
 export class MovableObject {
     x = 100;
     y = 280;
@@ -8,6 +10,21 @@ export class MovableObject {
     currentImage = 0;
     speed = 0.15;
     otherDirection = false;
+    speedY = 0;
+    acceleration = 2.5;
+
+    applyGravity() {
+        setInterval(() => {
+            if(this.isAboveGround()){
+                this.y -= this.speedY;
+                this.speedY -= this.acceleration;
+            }
+        }, 1000 / 60);
+    }
+
+    isAboveGround() {
+        return this.y < 150;
+    }
 
 
     loadImage(path) {
