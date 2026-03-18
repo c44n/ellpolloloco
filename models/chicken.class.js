@@ -15,13 +15,17 @@ export class Chicken extends MovableObject {
         this.x = 200 + Math.random() * 500;
         this.speed = 0.15 + Math.random() * 0.45;
 
-        this.moveLeft();
+        IntervalHub.startInterval(this.chickenMoveLeft, 1000 / 60);
         IntervalHub.startInterval(this.walkAnimation, 1000 / 15);
     }
 
     walkAnimation = () => {
         this.playAnimations(this.imagesWalk);
     };
+
+    chickenMoveLeft = () => {
+        this.moveLeft();
+    }
 
     
 }
