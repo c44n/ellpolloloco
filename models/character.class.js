@@ -4,7 +4,7 @@ import { MovableObject } from "./movable-object.class.js";
 
 export class Character extends MovableObject {
     height = 280;
-    y = 80;
+    y = 0;
     imagesWalk = ImageHub.CHARACTER.walk;
     imagesJump = ImageHub.CHARACTER.jump;
     speed = 20;
@@ -13,6 +13,7 @@ export class Character extends MovableObject {
     constructor() {
         super().loadImage(this.imagesWalk[0]);
         this.loadImages(this.imagesWalk);
+        this.loadImages(this.imagesJump);
         this.applyGravity();
 
         this.animate();
@@ -50,16 +51,16 @@ export class Character extends MovableObject {
 
     animate() {
         setInterval(() => {
-            if(this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+            if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.x += this.speed;
                 this.otherDirection = false;
-                
+
             }
 
-            if(this.world.keyboard.LEFT && this.x > 0) {
+            if (this.world.keyboard.LEFT && this.x > 0) {
                 this.x -= this.speed;
                 this.otherDirection = true;
-                
+
             }
 
             this.world.camera_x = -this.x + 100;
@@ -67,9 +68,13 @@ export class Character extends MovableObject {
 
 
         setInterval(() => {
-            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                // Walk animation
-                this.playAnimations(this.imagesWalk);
+            if (this.isAboveGround()) {
+                this.playAnimations(this.imagesJump);
+            } else {
+                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                    // Walk animation
+                    this.playAnimations(this.imagesWalk);
+                }
             }
         }, 45);
     }
